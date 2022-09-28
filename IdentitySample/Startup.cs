@@ -1,6 +1,9 @@
+using IdentitySample.Models.DomainModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,6 +27,11 @@ namespace IdentitySample
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            #region [- Step 4 -]
+            services.AddDbContext<IdentitySampleDbContext>(c => c.UseSqlServer(Configuration.GetConnectionString("Default")));
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<IdentitySampleDbContext>();
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
