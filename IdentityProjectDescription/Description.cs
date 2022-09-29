@@ -22,5 +22,10 @@
         //AddDbContext
         //AddIdentity
         #endregion
+
+        #region [- Step 5 : Creating Database : Migration & Update database -]
+        //PM> add-migration InitialMigration
+        //PM> update-database
+        #endregion
     }
 }
