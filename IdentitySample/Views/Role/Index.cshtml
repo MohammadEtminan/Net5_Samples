@@ -1,0 +1,33 @@
+﻿@model List<IdentityRole>
+<table class="table table-striped table-bordered table-secondary ">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Actions</th>
+    </tr>
+    @if (Model.Count == 0)
+    {
+        <tr>
+            <td colspan="6">There is not any registered role in the app</td>
+        </tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+
+                <td>@item.Name</td>
+                <td>
+                    <form method="post" asp-controller="Role" asp-action="Delete">
+                        <input type="hidden" value="@item.Id" name="id" />
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+
+                    </form>
+                </td>
+            </tr>
+        }
+    }
+</table>
+<a asp-action="RegisterRole" asp-controller="Role" class="btn btn-info">Register Role</a>

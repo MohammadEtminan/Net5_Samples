@@ -52,5 +52,14 @@
         //create Delete User action
         //create Delete button to Index of User
         #endregion
+
+        #region [- Step 7 : Creating Role Pipeline -]
+        //Create RoleController
+        //Inject RoleManager<IdentityRole> by ctor
+        //Create Index view to show roles
+        //Create 'CreateRoleModel'
+        //Create RegisterRole and Delete like User with role manager
+        //Create menu for Roles like Users
+        #endregion
     }
 }
