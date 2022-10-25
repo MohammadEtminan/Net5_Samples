@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
 using IdentitySample.Models.DomainModels.AAADomainModels.Dtos;
 
 namespace IdentitySample.Controllers
@@ -10,10 +10,12 @@ namespace IdentitySample.Controllers
     public class UserController : Controller
     {
         private UserManager<IdentityUser> _userManager;
+        private RoleManager<IdentityRole> _roleManager;
 
-        public UserController(UserManager<IdentityUser> userManager)
+        public UserController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         public IActionResult Index()
@@ -70,6 +72,44 @@ namespace IdentitySample.Controllers
                 TempData["Message"] = "Fail Delete";
             }
             return RedirectToAction("Index", "Users");
+        }
+
+        public async Task<IActionResult> EditUserRoles(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            var userRoles = await _userManager.GetRolesAsync(user);
+            var roles = _roleManager.Roles.ToList();
+            var model = new EditUserRoles()
+            {
+                UserName = user.UserName,
+                UserId = user.Id,
+                Roles = roles,
+                UserRoles = userRoles.ToList()
+
+            };
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditUserRoles(string userId, List<string> roles)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            var currentRoles = await _userManager.GetRolesAsync(user);
+            foreach (var item in currentRoles)
+            {
+                if (!roles.Any(c => c == item))
+                {
+                    var removeRoleResult = await _userManager.RemoveFromRoleAsync(user, item);
+                }
+            }
+            foreach (var item in roles)
+            {
+                var isInRole = await _userManager.IsInRoleAsync(user, item);
+                if (!isInRole)
+                {
+                    var addToRoleResult = await _userManager.AddToRoleAsync(user, item);
+                }
+            }
+            return RedirectToAction("Index", "User");
         }
     }
 }

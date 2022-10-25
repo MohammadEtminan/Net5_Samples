@@ -52,5 +52,24 @@
         //create Delete User action
         //create Delete button to Index of User
         #endregion
+
+        #region [- Step 7 : Creating Role Pipeline -]
+        //Create RoleController
+        //Inject RoleManager<IdentityRole> by ctor
+        //Create Index view to show roles
+        //Create 'CreateRoleModel'
+        //Create RegisterRole and Delete like User with role manager
+        //Create menu for Roles like Users
+        #endregion
+
+        #region [- Step 8 : Assigning Roles to a user -]
+        //Assign roles to users by usermanager
+        //Show users and his/her roles:
+        //Create EditUserRoles as ViewModel
+        //Inject rolemanager into the UserController
+        //Create EditUserRoles action in UserController
+        //Create EditUserRoles page
+        //Create Edit Roles in User Index
+        #endregion
     }
 }
