@@ -71,5 +71,20 @@
         //Create EditUserRoles page
         //Create Edit Roles in User Index
         #endregion
+
+        #region [- Step 9 : Create Authentication Pipeline -]
+        //User Challenge process: This process starts when a user can not loging :
+        //Redirect user to Invalid username or password page [Http response status 401]
+
+        //Add up Authenticate middleware between UseRouting and UseAuthorization middlewares
+        //Create LoginModel
+        //Create AccountController
+        //Create Login Get action
+        //Create LoginPage
+        //Create Login Post action
+        //Inject SigninManger service as the Authenticate service
+        //Use SigninManger as the Authenticate service        
+        //Create Logout action
+        #endregion
     }
 }
