@@ -8,6 +8,9 @@ using IdentitySample.Models.DomainModels.AAADomainModels.Dtos;
 
 namespace IdentitySample.Controllers
 {
+    #region [- Step 11-]
+    //[Authorize("Administrators")]
+    #endregion    
     [Authorize]
     public class UserController : Controller
     {

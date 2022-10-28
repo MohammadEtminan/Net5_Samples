@@ -26,6 +26,16 @@ namespace IdentitySample
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            #region [- Step 11 -]
+            //services.AddAuthorization(c =>
+            //{
+            //    c.AddPolicy("Administrators", c =>
+            //    {
+            //        c.RequireRole("Admin");
+            //    });
+            //}); 
+            #endregion
+
             services.AddControllersWithViews();
 
             #region [- Step 4 -]
