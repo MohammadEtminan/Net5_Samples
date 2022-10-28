@@ -71,5 +71,31 @@
         //Create EditUserRoles page
         //Create Edit Roles in User Index
         #endregion
+
+        #region [- Step 9 : Create Authentication Pipeline -]
+        //User Challenge process: This process starts when a user can not loging :
+        //Redirect user to Invalid username or password page [Http response status 401]
+
+        //Add up Authenticate middleware between UseRouting and UseAuthorization middlewares
+        //Create LoginModel
+        //Create AccountController
+        //Create Login Get action
+        //Create LoginPage
+        //Create Login Post action
+        //Inject SigninManger service as the Authenticate service
+        //Use SigninManger as the Authenticate service        
+        //Create Logout action
+        #endregion
+
+        #region [- Step 10 : Create Authorization flow -]
+        //User Forbidden process: This process starts when a user can  login but is not Authorized to do sth:
+        //Redirect user  Access Deny page [Http response status 403]
+
+        //Use [Authorize] & [AllowAnonymous] on the Controller or Action
+        //BackOffice apps : They need login for all pages except a few pages. ==> Use [AllowAnonymous] for those free pages
+        //Office apps : They do not need login for all pages ==> Use [Authorize] for specific pages
+
+        //Authorize UserController with [Authorize] 
+        #endregion
     }
 }

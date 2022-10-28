@@ -3,10 +3,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 using IdentitySample.Models.DomainModels.AAADomainModels.Dtos;
 
 namespace IdentitySample.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         private UserManager<IdentityUser> _userManager;
