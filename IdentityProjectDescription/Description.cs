@@ -97,5 +97,10 @@
 
         //Authorize UserController with [Authorize] 
         #endregion
+
+        #region [- Step 11 : Create policy for roles -]
+        //Create multiple policy with role or claim for any role in ConfigureService() in startup.cs
+        //use policy in [Authorize] 
+        #endregion
     }
 }
