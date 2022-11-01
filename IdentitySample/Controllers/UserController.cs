@@ -10,8 +10,11 @@ namespace IdentitySample.Controllers
 {
     #region [- Step 11-]
     //[Authorize("Administrators")]
-    #endregion    
-    [Authorize]
+    #endregion
+
+    #region [- Step 10 -]
+    //[Authorize] 
+    #endregion
     public class UserController : Controller
     {
         private UserManager<IdentityUser> _userManager;
